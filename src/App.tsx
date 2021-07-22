@@ -12,7 +12,7 @@ export type TodolistType = {
     title: string
     filter: FilterValuesType
 }
-type TasksStateType = {
+export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
 
@@ -39,15 +39,15 @@ export const App = () => {
         ],
     })
 
-    function removeTusk (id: string, todoListId: string) {
-        let todoListTasks = tasks[todoListId]
-        tasks[todoListId] = todoListTasks.filter(t => t.id !== id)
-        setTasks({...tasks})
-    }
     function addTask(title: string, todoListId: string) {
         let task = {id: v1(), title: title, isDone: false}
         let todoListTasks = tasks[todoListId]
         tasks[todoListId] = [...todoListTasks, task]
+        setTasks({...tasks})
+    }
+    function removeTusk (id: string, todoListId: string) {
+        let todoListTasks = tasks[todoListId]
+        tasks[todoListId] = todoListTasks.filter(t => t.id !== id)
         setTasks({...tasks})
     }
     function changeStatus (id: string, isDone: boolean, todoListId: string) {
