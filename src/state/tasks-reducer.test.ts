@@ -1,19 +1,23 @@
 import {TasksStateType} from "../App";
 import {tasksReducer} from "./tasks-reducer";
-import {addTodoList, removeTodoList} from "./totdolists-reducer";
+import {addTodoList, removeTodoList} from "./todolists-reducer";
 
-const startState: TasksStateType = {
-    "todoListId1": [
-        { id: "1", title: "CSS", isDone: false },
-        { id: "2", title: "JS", isDone: true },
-        { id: "3", title: "React", isDone: false }
-    ],
-    "todoListId2":  [
-        { id: "1", title: "bread", isDone: false },
-        { id: "2", title: "milk", isDone: true },
-        { id: "3", title: "tea", isDone: false }
-    ]
-}
+let startState: TasksStateType = {}
+
+beforeEach(() => {
+    startState = {
+        "todoListId1": [
+            { id: "1", title: "CSS", isDone: false },
+            { id: "2", title: "JS", isDone: true },
+            { id: "3", title: "React", isDone: false }
+        ],
+        "todoListId2":  [
+            { id: "1", title: "bread", isDone: false },
+            { id: "2", title: "milk", isDone: true },
+            { id: "3", title: "tea", isDone: false }
+        ]
+    }
+})
 
 test('correct task should be added to correct array', () => {
 

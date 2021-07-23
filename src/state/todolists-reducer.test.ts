@@ -1,20 +1,25 @@
 import {v1} from 'uuid';
 import {FilterValuesType, TodolistType} from '../App';
-import {addTodoList, todoListsReducer} from "./totdolists-reducer";
+import {AddTodoList, todoListsReducer} from "./todolists-reducer";
 
-let todoListId1 = v1()
-let todoListId2 = v1()
+let todoListId1: string
+let todoListId2: string
+let startState: Array<TodolistType> = []
 
-const startState: Array<TodolistType> = [
-    {id: todoListId1, title: "What to learn", filter: "all"},
-    {id: todoListId2, title: "What to buy", filter: "all"}
-]
+beforeEach(() => {
+    todoListId1 = v1()
+    todoListId2 = v1()
+    startState = [
+        {id: todoListId1, title: "What to learn", filter: "all"},
+        {id: todoListId2, title: "What to buy", filter: "all"}
+    ]
+})
 
 test('correct todolist should be added', () => {
 
     let newTodoListTitle = "New Todolist"
 
-    let action = addTodoList(newTodoListTitle)
+    let action = AddTodoList(newTodoListTitle)
 
     const endState = todoListsReducer(startState, action)
 
