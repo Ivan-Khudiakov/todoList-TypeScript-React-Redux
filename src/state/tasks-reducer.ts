@@ -35,20 +35,16 @@ export const tasksReducer = (state:TasksStateType = initialState, action: Action
             return newState
         }
         case CHANGE_TASK_STATUS: {
-            let newState = {...state}
-            let changedTask = newState[action.todoListId].find(t => t.id === action.id)
-            if (changedTask) {
-                changedTask.isDone = action.isDone
-            }
-            return newState
+            let todoListTasks = state[action.todoListId]
+            let newTaskArray = todoListTasks.map(t => t.id === action.id ? {...t, isDone: action.isDone} : t)
+            state[action.todoListId] = newTaskArray
+            return ({...state})
         }
         case CHANGE_TASK_TITLE: {
-            let newState = {...state}
-            let changedTask = newState[action.todoListId].find(t => t.id === action.id)
-            if (changedTask) {
-                changedTask.title = action.title
-            }
-            return newState
+            let todoListTasks = state[action.todoListId]
+            let newTaskArray = todoListTasks.map(t => t.id === action.id ? {...t, title: action.title} : t)
+            state[action.todoListId] = newTaskArray
+            return ({...state})
         }
         case ADD_TODOLIST: {
             let newState = {...state}

@@ -2,7 +2,7 @@ import React, {useReducer} from 'react';
 import './App.css';
 import {TodoList} from "./TodoList";
 import {v1} from "uuid";
-import AddItemForm from "./AddItemForm";
+import {AddItemForm} from "./AddItemForm";
 import {AppBar, Button, Container, IconButton, Toolbar, Typography, Grid, Paper} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";
 import {
@@ -20,9 +20,6 @@ export type TodolistType = {
     title: string
     filter: FilterValuesType
 }
-// export type TasksStateType = {
-//     [key: string]: Array<TaskType>
-// }
 
 export const AppWithReducers = () => {
 
@@ -117,7 +114,7 @@ export const AppWithReducers = () => {
                             <Grid item>
                                 <Paper style={{padding: "10px"}}>
                                     <TodoList key={tl.id}
-                                              id={tl.id}
+                                              todoListId={tl.id}
                                               title={tl.title}
                                               filter={tl.filter}
                                               tasks={tasksForTodolist}
